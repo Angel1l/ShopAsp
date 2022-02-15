@@ -1,21 +1,8 @@
-﻿@using Project.Data.Models
-@model IEnumerable<Guns>
-@{
-    Layout = null;
-}
-@{
-}
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>List</title>
-    </head>
-    <body>
-        <h2>Все Оружия</h2>
+﻿
+        <h1>Все Оружия</h1>
+        <h3>@Model.gunsCategory</h3>
     @{
-        foreach (var guns in Model)
+        foreach (var guns in Model.allGuns)
         {
             <div>
             <h2>Модель: @guns.name</h2>
@@ -23,5 +10,3 @@
             </div>
         }
         }
-    </body>
-</html>

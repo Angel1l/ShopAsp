@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project.Data.Interface;
+using Project.ViewModels;
 
 namespace Project.Controllers
 {
@@ -16,8 +17,11 @@ namespace Project.Controllers
      
         public ViewResult List()
         {
-            var guns = _allGuns.Guns;
-            return View(guns);
+            ViewBag.Title = "Страница с оружием";
+            GunsListViewModel obj = new GunsListViewModel();
+            obj.allGuns = _allGuns.Guns;
+            obj.gunsCategory = "Pistols";
+            return View(obj);
         }
     }
 }
