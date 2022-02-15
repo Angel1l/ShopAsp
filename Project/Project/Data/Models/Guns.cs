@@ -9,8 +9,8 @@
         public string img { get; set; }
         public ushort price { get; set; }
         public bool isFavorite { get; set; }
-        public int acailable { get; set; }
+        public bool available { get; set; }
         public int categoryid { get; set; }
-        public virtual Category category { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
