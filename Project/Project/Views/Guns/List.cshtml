@@ -1,12 +1,18 @@
 ﻿
         <h1>Все Оружия</h1>
         <h3>@Model.gunsCategory</h3>
-    @{
+  <div class="row mtr-5 mb-2">
+        @{
+
         foreach (var guns in Model.allGuns)
         {
-            <div>
-            <h2>Модель: @guns.name</h2>
-            <p>Цена: @guns.price.ToString("c")</p>
+            <div class="col-lg-4">
+                <img class="img-thumbnail" src="@guns.img" alt="@guns.name"/>
+                <h2>@guns.name</h2>
+                <p>@guns.shortDesc</p>
+                <p>Цена: @guns.price.ToString("c")</p>
+                <p><a class="btn btn-warning" href="#">Подробнее</a></p>
             </div>
         }
         }
+        </div> 
