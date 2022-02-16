@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Project.Data;
 using Project.Data.Interface;
 using Project.Data.mocks;
+using Project.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +28,8 @@ namespace Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confSting.GetConnectionString("DefaultConnection")));
-            services.AddTransient<IAllGuns, MockGuns>();
-            services.AddTransient<IGunsCategory, MockCategory>();
+            services.AddTransient<IAllGuns, GunsRepository>();
+            services.AddTransient<IGunsCategory, CategoryRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
