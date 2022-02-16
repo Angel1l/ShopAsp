@@ -6,7 +6,7 @@ namespace Project.Data.Interface
     public interface IAllGuns
     {
         IEnumerable<Guns> Guns { get; }
-        IEnumerable<Guns> getFavGuns { get; set; }
+        IEnumerable<Guns> getFavGuns { get; }
         Guns getObjectGuns(int gunsid);
     }
 }
