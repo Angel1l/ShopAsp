@@ -12,5 +12,7 @@ namespace Project.Data
 
         public DbSet<Guns> Guns { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<ShopGunsItem> ShopGunsItem { get; set; }
+
     }
 }
