@@ -10,7 +10,7 @@ namespace Project.Controllers
 {
     public class GunsController : Controller
     {
-        private readonly IAllGuns _allGuns;       
+        private readonly IAllGuns _allGuns;
         private readonly IGunsCategory _gunsCategory;
 
         public GunsController(IAllGuns iAllGuns, IGunsCategory iGunsCategory)
@@ -18,7 +18,8 @@ namespace Project.Controllers
             _allGuns = iAllGuns;
             _gunsCategory = iGunsCategory;
         }
-     
+        [Route("Guns/List")]
+        [Route("Guns/List/{category}")]
         public ViewResult List(string category)
         {
             string _category = category;
@@ -33,14 +34,14 @@ namespace Project.Controllers
                 if(string.Equals("pistols",category, StringComparison.OrdinalIgnoreCase))
                 {
                     guns = _allGuns.Guns.Where(g => g.Category.categoryName.Equals("Пистолеты")).OrderBy(guns => guns.id);
+                    gunsCategory = "Пистолеты";
                 }
                 else if(string.Equals("snipers", category, StringComparison.OrdinalIgnoreCase))
                 {
                     guns = _allGuns.Guns.Where(g => g.Category.categoryName.Equals("Снайперские винтовки")).OrderBy(guns => guns.id);
+                    gunsCategory = "Снайперские винтовки";
                 }
 
-                gunsCategory = category;
-             
             }
             var gunsObj = new GunsListViewModel
             {

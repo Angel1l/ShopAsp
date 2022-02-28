@@ -54,7 +54,8 @@ namespace Project
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
-                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}"),
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(name: "categoryFilter", template: "Guns/{action}/{category?}", defaults: new { Controller = "car", action = "List" });
             });
             using(var scope = app.ApplicationServices.CreateScope())
             {
