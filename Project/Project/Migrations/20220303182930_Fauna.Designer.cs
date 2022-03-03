@@ -10,8 +10,8 @@ using Project.Data;
 namespace Project.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20220303163326_SALO")]
-    partial class SALO
+    [Migration("20220303182930_Fauna")]
+    partial class Fauna
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,22 +85,32 @@ namespace Project.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("adress")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
 
                     b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<DateTime>("orderTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("phone")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("surname")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.HasKey("id");
 
@@ -114,10 +124,7 @@ namespace Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("carID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("gunsid")
+                    b.Property<int>("GunsID")
                         .HasColumnType("int");
 
                     b.Property<int>("orderID")
@@ -128,7 +135,7 @@ namespace Project.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("gunsid");
+                    b.HasIndex("GunsID");
 
                     b.HasIndex("orderID");
 
@@ -173,7 +180,9 @@ namespace Project.Migrations
                 {
                     b.HasOne("Project.Data.Models.Guns", "guns")
                         .WithMany()
-                        .HasForeignKey("gunsid");
+                        .HasForeignKey("GunsID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Project.Data.Models.Order", "order")
                         .WithMany("orderDetails")
