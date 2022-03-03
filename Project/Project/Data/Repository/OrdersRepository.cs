@@ -17,7 +17,7 @@ namespace Project.Data.Repository
         {
             order.orderTime = DateTime.Now; 
             appDBContent.Order.Add(order);
-
+            appDBContent.SaveChanges();
             var items = shopGuns.listShopItems;
 
             foreach(var el in items)
