@@ -32,7 +32,7 @@ namespace Project.Controllers
         public RedirectToActionResult addToGuns(int id)
         {
             var item = _gunsRep.Guns.FirstOrDefault(i => i.id == id);
-            if (item == null)
+            if (item != null)
             {
                 _shopGuns.AddToGuns(item);
             }

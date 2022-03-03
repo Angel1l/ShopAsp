@@ -37,7 +37,7 @@ namespace Project.Data.Models
             { 
                 ShopGunsId = ShopGunsId,
                 guns = guns,
-                price = guns.price,
+                price = guns.price
             });
 
             appDBcontent.SaveChanges();
